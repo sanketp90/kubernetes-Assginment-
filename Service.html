@@ -1,0 +1,19 @@
+[root@ip-172-31-6-121 05-services]# kubectl get svc
+NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+kubia-nodeport   NodePort    10.107.16.139   <none>        80:30123/TCP   103s
+kubia2           ClusterIP   10.99.10.99     <none>        80/TCP         2d20h
+  
+  root@ip-172-31-6-121 05-services]# kubectl get po -o wide
+NAME          READY   STATUS    RESTARTS   AGE     IP                NODE                                               NOMINATED NODE   READINESS GATES
+kubia-ghngb   1/1     Running   0          2d20h   192.168.232.103   ip-172-31-13-204.ap-southeast-1.compute.internal   <none>           <none>
+kubia-lzwkd   1/1     Running   0          2d20h   192.168.232.102   ip-172-31-13-204.ap-southeast-1.compute.internal   <none>           <none>
+kubia-rfhlk   1/1     Running   0          2d21h   192.168.232.101   ip-172-31-13-204.ap-southeast-1.compute.internal   <none>           <none>
+  
+  [root@ip-172-31-6-121 05-services]# curl 10.107.16.139:80
+You've hit kubia-rfhlk
+  
+  kubectl describe kubia-nodeport
+  
+  kubectl get po
+  
+  kubectl get rs
